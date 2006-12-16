@@ -27,7 +27,10 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *)
-property kwIndex : 18
+
+global commonLib
+global iptckeywordIndex
+global emptyIPTC
 
 on idle theObject
 	set theSel to {}
@@ -71,20 +74,24 @@ on idle theObject
 					error m number n from f to t partial result p
 				end try
 				
-				tell application "Finder"
-					set theAlias to (POSIX file thePath) as alias
+				set thePaths to {}
+				tell commonLib
+					set thePaths to getAllImagePaths for thePath
 				end tell
+				repeat with p in thePaths
+					set theAlias to contents of p
+					tell application "GraphicConverter"
+						try
+							set theIPTC to (get file iptc of theAlias)
+						on error
+							copy emptyIPTC to theIPTC
+						end try
+						set item iptckeywordIndex of theIPTC to theKeys
+						set file iptc of theAlias to theIPTC
+					end tell
+				end repeat
 				
-				tell application "GraphicConverter"
-					try
-						set theIPTC to get file iptc of theAlias
-					on error
-						set theIPTC to {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
-					end try
-					set item kwIndex of theIPTC to theKeys
-					set file iptc of theAlias to theIPTC
-				end tell
-				
+				-- update the progress indicator
 				tell window "status"
 					tell progress indicator "progress" to increment by 1
 				end tell
@@ -99,4 +106,24 @@ on idle theObject
 	quit
 	
 end idle
+
+on launched theObject
+	loadScripts()
+	tell commonLib to getiPhotoVersion()
+	set iptckeywordIndex to iptckeywordIndex of commonLib
+	set emptyIPTC to emptyIPTC of commonLib
+end launched
+
+on pathToScripts()
+	set appPath to (path to me from user domain) as text
+	return (appPath & "Contents:Resources:Scripts:") as text
+end pathToScripts
+
+on loadScript(scriptName)
+	return load script file (my pathToScripts() & scriptName & ".scpt")
+end loadScript
+
+on loadScripts()
+	set commonLib to my loadScript("common")
+end loadScripts
 
