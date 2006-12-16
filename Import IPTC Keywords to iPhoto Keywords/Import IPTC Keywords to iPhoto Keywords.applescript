@@ -27,8 +27,10 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *)
-property kwIndex : 18
 
+global commonLib
+global iptckeywordIndex
+global emptyIPTC
 
 on idle theObject
 	set theSel to {}
@@ -67,9 +69,9 @@ on idle theObject
 						set theIPTC to get file iptc of theAlias
 					on error
 						-- create empty IPTC data list if image doesn't have any
-						set theIPTC to {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
+						copy emptyIPTC to theIPTC
 					end try
-					set theIPTCKeywords to item kwIndex of theIPTC
+					set theIPTCKeywords to item iptckeywordIndex of theIPTC
 				end tell
 				
 				-- theIPTCKeywords may not be defined so we need to handle that using try.
@@ -114,6 +116,22 @@ on idle theObject
 	quit
 end idle
 
-on clicked theObject
-	(*Add your script here.*)
-end clicked
+on launched theObject
+	loadScripts()
+	tell commonLib to getiPhotoVersion()
+	set iptckeywordIndex to iptckeywordIndex of commonLib
+	set emptyIPTC to emptyIPTC of commonLib
+end launched
+
+on pathToScripts()
+	set appPath to (path to me from user domain) as text
+	return (appPath & "Contents:Resources:Scripts:") as text
+end pathToScripts
+
+on loadScript(scriptName)
+	return load script file (my pathToScripts() & scriptName & ".scpt")
+end loadScript
+
+on loadScripts()
+	set commonLib to my loadScript("common")
+end loadScripts

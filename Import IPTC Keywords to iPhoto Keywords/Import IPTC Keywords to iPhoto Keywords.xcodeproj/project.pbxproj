@@ -13,6 +13,7 @@
 			contextName = "";
 			files = (
 				257572C5072881A4000BE9CA /* Import IPTC Keywords to iPhoto Keywords.applescript in AppleScript */,
+				F948FF450B301B6B0068326D /* common.applescript in AppleScript */,
 			);
 			isSharedContext = 0;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -26,6 +27,7 @@
 		257572CA072881A4000BE9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		257572CC072881A4000BE9CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		257572CD072881A4000BE9CA /* AppleScriptKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA206CF1015C4E2903C91932 /* AppleScriptKit.framework */; };
+		F948FF450B301B6B0068326D /* common.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = F948FF440B301B6B0068326D /* common.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,7 @@
 		65359356078DD41800E8BB2F /* AppleScriptKit.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; name = AppleScriptKit.sdef; path = /System/Library/Frameworks/AppleScriptKit.framework/Versions/A/Resources/AppleScriptKit.sdef; sourceTree = "<absolute>"; };
 		DA206CF1015C4E2903C91932 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = /System/Library/Frameworks/AppleScriptKit.framework; sourceTree = "<absolute>"; };
 		DA206CF3015C4E8B03C91932 /* Import IPTC Keywords to iPhoto Keywords.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = "Import IPTC Keywords to iPhoto Keywords.applescript"; sourceTree = "<group>"; };
+		F948FF440B301B6B0068326D /* common.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; name = common.applescript; path = ../common.applescript; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				DA206CF3015C4E8B03C91932 /* Import IPTC Keywords to iPhoto Keywords.applescript */,
+				F948FF440B301B6B0068326D /* common.applescript */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -223,7 +227,12 @@
 		F941E2A708A8E7D500727537 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -250,7 +259,12 @@
 		F941E2A808A8E7D500727537 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -274,6 +288,11 @@
 		F941E2A908A8E7D500727537 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -294,18 +313,36 @@
 		F941E2AB08A8E7D500727537 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				CURRENT_PROJECT_VERSION = 2;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		F941E2AC08A8E7D500727537 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				CURRENT_PROJECT_VERSION = 2;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		F941E2AD08A8E7D500727537 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				CURRENT_PROJECT_VERSION = 2;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Default;
 		};
