@@ -1,4 +1,5 @@
-#List of changes made in each released version.
+#summary List of changes made in each release.
+#labels Featured
 
 = 1.1.0 =
 
