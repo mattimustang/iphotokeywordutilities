@@ -1,0 +1,18 @@
+#summary Installation and usage instructions.
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+The ZIP archive contains two utilities that allow you to Export and Import iPhoto keywords to and from IPTC keywords.
+
+= Installation =
+
+== Script Menu ==
+
+Both utilities are suitable for use in the *Script Menu*. To install them there:
+  * first enable the *Script Menu* using the *AppleScript Utility*.
+  * Copy the applications to one of the following locations:
+     * `~/Library/Scripts` - to enable the utilities for yourself only.
+     * `/Library/Scripts` - to enable the utlities for all users.
+  * You may prefer to create an `iPhoto` subfolder within the
+
